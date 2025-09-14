@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor de Inglês Fabiano Foschini - Blog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones sociais -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F8F8;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-padding {
+            padding: 4rem 1rem;
+        }
+        .card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-primary {
+            background-color: #B3CDE0;
+            color: #1a202c;
+        }
+        .btn-primary:hover {
+            background-color: #A0C0D5;
+            transform: translateY(-2px);
+        }
+        /* Estilos personalizados para o fundo do hero */
+        .hero-keys-container {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            height: 400px;
+            perspective: 500px;
+            overflow: hidden;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .hero-keys-container .piano-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(50deg) scale(1.5);
+            transform-origin: bottom;
+        }
+
+        /* Fundo dinâmico para outras seções */
+        .section-keys-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .section-keys-background .piano-key-group {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            animation: key-flow linear infinite;
+        }
+
+        /* Duração de animação diferente para efeito de profundidade */
+        .section-keys-background .piano-key-group:nth-child(1) {
+            animation-duration: 20s;
+            animation-delay: 0s;
+        }
+        .section-keys-background .piano-key-group:nth-child(2) {
+            animation-duration: 25s;
+            animation-delay: 5s;
+        }
+        .section-keys-background .piano-key-group:nth-child(3) {
+            animation-duration: 30s;
+            animation-delay: 10s;
+        }
+
+        /* Keyframes da Animação */
+        @keyframes key-flow {
+            0% {
+                transform: translateY(100%) scale(0.2);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.05;
+            }
+            50% {
+                transform: translateY(-50%) scale(0.5);
+                opacity: 0.08;
+            }
+            90% {
+                opacity: 0.05;
+            }
+            100% {
+                transform: translateY(-100%) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        /* Estilo para as próprias teclas do piano */
+        .white-key { fill: #ffffff; stroke: #cccccc; stroke-width: 1; }
+        .black-key { fill: #000000; stroke: #333333; stroke-width: 1; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container flex items-center justify-between py-4 px-4">
+            <a href="#" class="text-xl font-bold text-gray-900">Professor Fabiano Foschini</a>
+            <ul class="flex space-x-4">
+                <li><a href="#about" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">Sobre</a></li>
+                <li><a href="#services" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">Serviços</a></li>
+                <li><a href="#testimonials" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">Depoimentos</a></li>
+                <li><a href="#blog" class="text-gray-600 hover:text-gray-900 font-medium transition duration-300">Blog</a></li>
+                <li><a href="#contact" class="btn btn-primary">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Principal (Hero) -->
+    <section class="bg-gradient-to-r from-[#2c3e50] to-[#e74c3c] text-white section-padding text-center relative overflow-hidden">
+        <div class="hero-keys-container">
+            <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                <!-- Teclas Brancas -->
+                <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                <!-- Teclas Pretas -->
+                <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+            </svg>
+        </div>
+        <div class="container py-12 relative z-10">
+            <h1 class="text-3xl font-bold mb-4 leading-tight flex items-center justify-center space-x-4">
+                <i class="fa-solid fa-treble-clef text-white text-xl"></i>
+                <i class="fa-solid fa-music text-white text-xl"></i>
+                <span class="text-4xl">🇬🇧</span>
+                <span class="whitespace-nowrap">Aprenda Inglês com </span><span class="text-5xl text-[#FDFD96]">Harmonia</span>
+                <span class="text-4xl">🇺🇸</span>
+            </h1>
+            <p class="text-base max-w-2xl mx-auto mb-8 text-white font-bold italic">
+                Combinando o ritmo da música com a melodia do aprendizado de idiomas. Aulas de inglês profissionais que acertam o tom.
+            </p>
+            <a href="#contact" class="btn bg-white text-[#1a202c] hover:bg-gray-200">Comece Hoje</a>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Mim -->
+    <section id="about" class="section-padding bg-gray-50 relative overflow-hidden">
+        <div class="section-keys-background">
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+        </div>
+        <div class="container grid grid-cols-1 md:grid-cols-2 gap-8 items-start relative z-10">
+            <!-- Coluna Esquerda: A Abordagem Musical -->
+            <div class="card p-6 md:p-8 flex flex-col items-center text-center">
+                <img src="https://i.imgur.com/gUfVwdl.jpeg" alt="Fabiano Foschini" class="rounded-full shadow-lg w-32 h-32 md:w-48 md:h-48 object-cover mb-4">
+                <i class="fa-solid fa-piano text-4xl mb-4 text-[#B3CDE0]"></i>
+                <h2 class="text-2xl font-bold text-gray-900 mb-2">A Abordagem Musical</h2>
+                <p class="text-gray-700 mb-4 text-center leading-relaxed">
+                    Como músico apaixonado e professor de inglês experiente, trago uma metodologia única que combina o ritmo e os padrões naturais da música com a aquisição da linguagem. Essa abordagem inovadora ajuda os alunos a desenvolverem melhor a pronúncia, entonação e fluência.
+                </p>
+                <ul class="text-left w-full space-y-2 text-sm">
+                    <li class="flex items-center space-x-2 text-gray-700">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>5 anos de experiência em ensino</span>
+                    </li>
+                    <li class="flex items-center space-x-2 text-gray-700">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Metodologia com integração musical</span>
+                    </li>
+                    <li class="flex items-center space-x-2 text-gray-700">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Abordagem de aprendizado personalizada</span>
+                    </li>
+                    <li class="flex items-center space-x-2 text-gray-700">
+                        <i class="fa-solid fa-check text-green-500"></i>
+                        <span>Aulas online</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna Direita: Minha Filosofia -->
+            <div class="card p-6 md:p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Minha Filosofia</h2>
+                <div class="border-l-4 border-[#B3CDE0] pl-4 mb-6">
+                    <p class="italic text-gray-800 leading-relaxed mb-4">
+                        "A língua é música para os ouvidos. Quando aprendemos a ouvir o ritmo, a melodia e a harmonia no inglês, liberamos nossa habilidade natural de nos comunicarmos de forma bela."
+                    </p>
+                    <p class="italic text-gray-600 leading-relaxed text-sm">
+                        "Language is music to the ears. When we learn to hear the rhythm, melody, and harmony in English, we unlock our natural ability to communicate beautifully."
+                    </p>
+                </div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Acredito que cada estudante tem um ritmo de aprendizado único. Meu papel é ajudá-lo a encontrar sua voz e confiança em inglês, seja para se preparar para exames, avançar na carreira ou simplesmente explorar um novo idioma.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Serviços -->
+    <section id="services" class="section-padding relative overflow-hidden">
+        <div class="section-keys-background">
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+        </div>
+        <div class="container text-center relative z-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Serviços</h2>
+            <p class="text-base max-w-2xl mx-auto mb-8 text-gray-600">Aulas sob medida que acertam o tom</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Cartão de Serviço 1: Fala e Pronúncia -->
+                <div class="card">
+                    <i class="fa-solid fa-microphone text-3xl mb-4 text-[#B3CDE0]"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Fala e Pronúncia</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Domine o ritmo e a melodia da fala em inglês com técnicas de pronúncia baseadas em música.
+                    </p>
+                    <ul class="text-left space-y-2 text-xs text-gray-600">
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Redução de sotaque</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Padrões de entonação</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Aumento de confiança</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Falar em público</li>
+                    </ul>
+                </div>
+                <!-- Cartão de Serviço 2: Inglês Completo e Harmonioso (Mais Popular) -->
+                <div class="card relative border-4 border-[#B3CDE0]">
+                    <span class="absolute top-0 right-0 -mt-3 -mr-3 bg-[#E0B3CE] text-gray-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Mais Popular</span>
+                    <i class="fa-solid fa-music text-3xl mb-4 text-[#B3CDE0]"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Inglês Completo e Harmonioso</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Aprendizado de inglês completo que combina todas as habilidades com metodologia musical.
+                    </p>
+                    <ul class="text-left space-y-2 text-xs text-gray-600">
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Todas as habilidades linguísticas</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Integração musical</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Currículo personalizado</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Rastreamento de progresso</li>
+                    </ul>
+                </div>
+                <!-- Cartão de Serviço 3: Inglês para Negócios -->
+                <div class="card">
+                    <i class="fa-solid fa-briefcase text-3xl mb-4 text-[#B3CDE0]"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Inglês para Negócios</h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Habilidades de inglês profissional para avanço na carreira e comunicação de negócios.
+                    </p>
+                    <ul class="text-left space-y-2 text-xs text-gray-600">
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Habilidades de apresentação</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Escrita de e-mails</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Participação em reuniões</li>
+                        <li><i class="fa-solid fa-caret-right text-[#E0B3CE] mr-2"></i>Vocabulário da indústria</li>
+                    </ul>
+                </div>
+            </div>
+            <a href="#contact" class="btn btn-primary mt-8">Agende uma Consulta Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Seção de Depoimentos -->
+    <section id="testimonials" class="section-padding bg-gray-50 relative overflow-hidden">
+        <div class="section-keys-background">
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+        </div>
+        <div class="container text-center relative z-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Histórias de Sucesso dos Alunos</h2>
+            <p class="text-base max-w-2xl mx-auto mb-8 text-gray-600">Ouça de alunos que encontraram sua voz</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Depoimento 1 -->
+                <div class="card flex flex-col items-center text-center">
+                    <div class="bg-[#B3CDE0] text-gray-800 rounded-full h-10 w-10 flex items-center justify-center text-lg font-semibold mb-4">
+                        M
+                    </div>
+                    <p class="text-base font-semibold text-gray-900">Maria Santos</p>
+                    <p class="text-xs text-gray-500 mb-2">Profissional de Negócios</p>
+                    <div class="text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-700 text-sm">
+                        "A abordagem musical do Fabiano transformou meu aprendizado de inglês. Finalmente entendi o ritmo do idioma, e minha confiança disparou!"
+                    </p>
+                </div>
+                <!-- Depoimento 2 -->
+                <div class="card flex flex-col items-center text-center">
+                    <div class="bg-[#C1E1C1] text-gray-800 rounded-full h-10 w-10 flex items-center justify-center text-lg font-semibold mb-4">
+                        C
+                    </div>
+                    <p class="text-base font-semibold text-gray-900">Carlos Rodriguez</p>
+                    <p class="text-xs text-gray-500 mb-2">Estudante Universitário</p>
+                    <div class="text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-700 text-sm">
+                        "As aulas de pronúncia baseadas em música mudaram o jogo. Passei no meu IELTS com louvor graças à metodologia única do Fabiano."
+                    </p>
+                </div>
+                <!-- Depoimento 3 -->
+                <div class="card flex flex-col items-center text-center">
+                    <div class="bg-[#D8BFD8] text-gray-800 rounded-full h-10 w-10 flex items-center justify-center text-lg font-semibold mb-4">
+                        A
+                    </div>
+                    <p class="text-base font-semibold text-gray-900">Ana Silva</p>
+                    <p class="text-xs text-gray-500 mb-2">Gerente de Marketing</p>
+                    <div class="text-yellow-400 text-sm mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="italic text-gray-700 text-sm">
+                        "Aprender inglês parecia aprender a cantar. O Fabiano tornou o processo divertido, envolvente e incrivelmente eficaz. Recomendo muito!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção do Blog -->
+    <section id="blog" class="section-padding relative overflow-hidden">
+        <div class="section-keys-background">
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+        </div>
+        <div class="container text-center relative z-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Últimas Postagens do Blog</h2>
+            <p class="text-base max-w-2xl mx-auto mb-8 text-gray-600">Dicas, insights e aprendizado de inglês musical</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Postagem do Blog 1: A Ciência por Trás da Música e do Aprendizado de Idiomas -->
+                <div class="card">
+                    <i class="fa-solid fa-music text-3xl mb-4 text-gray-600"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">A Ciência por Trás da Música e do Aprendizado de Idiomas</h3>
+                    <p class="text-sm text-gray-500 mb-4">15 de dezembro de 2024</p>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        Descubra como os padrões musicais podem acelerar sua jornada de aprendizado de inglês...
+                    </p>
+                </div>
+                <!-- Postagem do Blog 2: 5 Exercícios de Pronúncia Usando Ritmos de Músicas -->
+                <div class="card">
+                    <i class="fa-solid fa-microphone text-3xl mb-4 text-gray-600"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">5 Exercícios de Pronúncia Usando Ritmos de Músicas</h3>
+                    <p class="text-sm text-gray-500 mb-4">10 de dezembro de 2024</p>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        Transforme sua pronúncia com estes exercícios divertidos baseados em música...
+                    </p>
+                </div>
+                <!-- Postagem do Blog 3: Construindo Confiança Através do Inglês Musical -->
+                <div class="card">
+                    <i class="fa-solid fa-headphones text-3xl mb-4 text-gray-600"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Construindo Confiança Através do Inglês Musical</h3>
+                    <p class="text-sm text-gray-500 mb-4">5 de dezembro de 2024</p>
+                    <p class="text-gray-700 mb-4 text-sm">
+                        Como a música pode ajudar a superar a ansiedade no aprendizado de idiomas e construir confiança...
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Postagem Completa 1 -->
+    <section id="blog-post-1" class="section-padding bg-gray-100 relative overflow-hidden">
+        <div class="container relative z-10">
+            <div class="card p-8">
+                <a href="#blog" class="text-[#B3CDE0] font-medium hover:underline mb-4 inline-flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Voltar ao Blog</span>
+                </a>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">A Ciência por Trás da Música e do Aprendizado de Idiomas</h2>
+                <p class="text-sm text-gray-500 mb-6">Postado em 15 de dezembro de 2024</p>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4 leading-relaxed">
+                        Por séculos, culturas em todo o mundo usaram a música como uma ferramenta poderosa para memorização e aprendizado. Mas qual é a ciência real por trás disso? Acontece que a conexão entre a música e a aquisição de idiomas é mais profunda do que você imagina.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Neurocientistas descobriram que ouvir e tocar música ativa muitas das mesmas regiões do cérebro que são responsáveis por processar a linguagem. Isso inclui áreas envolvidas no som, ritmo e reconhecimento de padrões. Quando você aprende a tocar uma escala musical ou a reconhecer uma melodia, está fortalecendo as mesmas vias neurais que o ajudam a entender a entonação e o ritmo de um novo idioma.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Isso é especialmente verdadeiro para a **pronúncia**. O inglês, como muitos idiomas, tem uma "musicalidade" única. Existem sílabas tônicas e átonas, e o ritmo de uma frase pode mudar completamente seu significado. Ao usar exercícios musicais, como identificar o ritmo em uma música ou repetir frases em um ritmo, os alunos podem internalizar esses padrões de forma natural. Isso faz com que sua fala soe mais natural e fluente, um objetivo que o aprendizado tradicional por livros didáticos muitas vezes tem dificuldade em alcançar.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Minha abordagem musical foi projetada para aproveitar essa conexão natural. Ao aprender inglês como se fosse uma música, você descobrirá que sua pronúncia melhora, sua capacidade de ouvir se aprimora e sua confiança para falar em qualquer situação aumenta. Não se trata apenas de aprender palavras; é sobre encontrar a melodia em seu novo idioma.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Postagem Completa 2 -->
+    <section id="blog-post-2" class="section-padding bg-gray-100 relative overflow-hidden">
+        <div class="container relative z-10">
+            <div class="card p-8">
+                <a href="#blog" class="text-[#B3CDE0] font-medium hover:underline mb-4 inline-flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Voltar ao Blog</span>
+                </a>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">5 Exercícios de Pronúncia Usando Ritmos de Músicas</h2>
+                <p class="text-sm text-gray-500 mb-6">Postado em 10 de dezembro de 2024</p>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4 leading-relaxed">
+                        Está pronto para ir além da repetição tediosa e tornar sua prática de pronúncia divertida e eficaz? Experimente estes cinco exercícios que usam o poder da música para ajudá-lo a dominar os sons do inglês.
+                    </p>
+                    <ol class="list-decimal list-inside space-y-4 mb-4">
+                        <li class="pl-2">
+                            <span class="font-semibold">O Pise do Ritmo:</span> Escolha uma música simples e rítmica. Enquanto ouve, bata o pé para cada sílaba de uma palavra. Em seguida, tente dizer a palavra enquanto bate o pé. Esta ação simples ajuda você a sentir a sílaba tônica e o ritmo da palavra.
+                        </li>
+                        <li class="pl-2">
+                            <span class="font-semibold">Cantando Frases:</span> Escolha uma frase que você ache difícil de pronunciar. Cante-a com uma melodia simples, como "Brilha, brilha, estrelinha". Isso divide a frase em uma melodia, ajudando seu cérebro e boca a lembrarem do fluxo e da entonação.
+                        </li>
+                        <li class="pl-2">
+                            <span class="font-semibold">O Jogo do Eco:</span> Encontre uma letra de música curta e clara. Ouça uma linha, pause a música e repita-a exatamente como você ouviu, tentando igualar o ritmo e o tom. Grave-se para comparar sua pronúncia com a original.
+                        </li>
+                        <li class="pl-2">
+                            <span class="font-semibold">Beatbox com Vogais:</span> Pratique vogais difíceis atribuindo-as a um ritmo de beatbox simples. Por exemplo, faça um som de "sh" para o hi-hat e um som de "p" para a caixa. Isso força você a se concentrar na forma da sua boca e na posição da sua língua.
+                        </li>
+                        <li class="pl-2">
+                            <span class="font-semibold">Rapando as Notícias:</span> Encontre uma manchete de jornal curta ou um parágrafo de um artigo. Tente fazer um rap com ele, usando um ritmo de bateria simples que você encontra no YouTube. Esta é uma maneira fantástica de praticar a junção de palavras e falar em um ritmo natural.
+                        </li>
+                    </ol>
+                    <p class="leading-relaxed">
+                        Pratique estes exercícios por apenas alguns minutos por dia, e você ficará surpreso com a rapidez com que sua pronúncia e fluência melhoram.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Postagem Completa 3 -->
+    <section id="blog-post-3" class="section-padding bg-gray-100 relative overflow-hidden">
+        <div class="container relative z-10">
+            <div class="card p-8">
+                <a href="#blog" class="text-[#B3CDE0] font-medium hover:underline mb-4 inline-flex items-center space-x-2">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Voltar ao Blog</span>
+                </a>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Construindo Confiança Através do Inglês Musical</h2>
+                <p class="text-sm text-gray-500 mb-6">Postado em 5 de dezembro de 2024</p>
+                <div class="prose max-w-none text-gray-700">
+                    <p class="mb-4 leading-relaxed">
+                        Para muitos aprendizes de idiomas, o maior obstáculo não é o vocabulário ou a gramática; é o medo de falar. A ansiedade de cometer um erro, de ser mal compreendido, pode ser paralisante. Minha abordagem musical para o aprendizado de inglês é projetada para superar exatamente este desafio.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Pense em como você se sente quando canta sua música favorita. Você não se preocupa com cada nota ou palavra. Você sente o ritmo, o fluxo e a emoção. Essa é a mentalidade que queremos alcançar com o inglês. Ao tratar o idioma como uma forma de música, mudamos o foco das regras gramaticais rígidas para uma sensação mais natural e intuitiva.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Quando aprendemos através de músicas, ritmo e entonação, começamos a apreciar o som do idioma, e não apenas sua estrutura. Isso remove a pressão de "acertar" e coloca a ênfase em se expressar. À medida que você pratica sua "melodia do idioma", naturalmente construirá confiança. Você se verá falando mais livremente, assumindo mais riscos e se preocupando menos com a perfeição.
+                    </p>
+                    <p class="mb-4 leading-relaxed">
+                        Este método não é sobre se tornar um cantor fluente; é sobre usar a liberdade da música para liberar a confiança que você já tem. É sobre encontrar sua voz e deixá-la ressoar, livre do medo de julgamento.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section id="contact" class="section-padding bg-gray-50 relative overflow-hidden">
+        <div class="section-keys-background">
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+            <div class="piano-key-group">
+                <svg class="piano-svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+                    <rect class="white-key" x="0" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="142.85" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="285.7" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="428.55" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="571.4" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="714.25" y="0" width="142.85" height="300" rx="10" ry="10" />
+                    <rect class="white-key" x="857.1" y="0" width="142.9" height="300" rx="10" ry="10" />
+                    <rect class="black-key" x="100" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="240" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="500" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="640" y="0" width="80" height="180" rx="5" ry="5" />
+                    <rect class="black-key" x="780" y="0" width="80" height="180" rx="5" ry="5" />
+                </svg>
+            </div>
+        </div>
+        <div class="container text-center relative z-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Pronto para Começar a Aprender?</h2>
+            <p class="text-base text-gray-600 max-w-xl mx-auto mb-8">
+                Entre em contato comigo diretamente pelos links abaixo para agendar uma aula ou fazer uma pergunta.
+            </p>
+            <div class="flex justify-center items-center gap-4 text-3xl mb-8">
+                <a href="mailto:areazodiac@gmail.com" class="text-[#E0B3CE] hover:text-[#B3CDE0] transition-colors duration-300">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/5513992017245" class="text-[#25D366] hover:text-[#B3CDE0] transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <!-- Instagram Link -->
+                <a href="https://www.instagram.com/ingles.comfabiano" class="text-[#C13584] hover:text-[#B3CDE0] transition-colors duration-300" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-900 text-white py-8 text-center text-sm">
+        <div class="container">
+            <p class="mb-2">&copy; 2025 Fabiano Foschini. Todos os Direitos Reservados.</p>
+            <p class="text-gray-400">Website criado para um negócio de ensino de inglês online.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
